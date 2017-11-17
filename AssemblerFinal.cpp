@@ -201,7 +201,7 @@ int main()
 
 	convertCode();
 
-	cout << "\nconverting finished.\n";
+	cout << "\n converting finished.\n";
 
 	return_error = scanCode();
     	cout << return_error << endl;
