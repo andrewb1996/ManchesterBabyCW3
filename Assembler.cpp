@@ -40,6 +40,8 @@ string instructionSet[13][3] = {
 {"MVF", "Yes", "0111"},
 };
 
+string newCodeFile = "AssemblerOutput.txt"; //for passing to Simulator
+
 //only uses the code file for now(will be able to take in extra programs
 int loadCodeFile(string file)
 {
@@ -426,7 +428,7 @@ string scanCode()
 void writeToExternalFile()
 {
 	//create a new string and populate it with a output file name 
-	string newCodeFile = "AssemblerOutput.txt";
+	newCodeFile = "AssemblerOutput.txt";
 
 	//open a file output stream and pass in the string created
 	ofstream outputFile(newCodeFile);
@@ -488,5 +490,16 @@ int main()
 	writeToExternalFile();
 	
 	//display a success message stating the new file name to the user and that the manchester baby simulator will now be run.
-	cout << "\nThe output has been written to an external file called AssemblerOutput.txt, The baby simulator will now be opened...\n";
+	cout << "\nThe output has been written to an external file called "<<newCodeFile<<", The baby simulator will now be opened...\n";
+	ifstream ifile("Simulator");
+	if (ifile) {
+		std::stringstream stream;
+		stream << "Simulator""
+			<< " " // don't forget a space between the path and the arguments
+			<< newCodeFile;
+		system(stream.str().c_str());
+	}
+	else {
+		cout << "\nSimulator program not found in current folder";
+	}
 }
