@@ -234,7 +234,8 @@ string compileCode(int variableNumber)
 			//for the third cgange the value of the for statement to a string
 			variableData[variableNumber][1] = convertDecToBinary(value,"variable");
 			variableData[variableNumber][2] = convertDecToBinary(i,"operand");	
-			string I.to_string(i);
+			string I = " ";
+			I.to_string(i);
 			variableData[variableNumber][3] = I;
 			variableNumber++;
 		}
@@ -359,7 +360,8 @@ string scanCode()
 		{
 			//display an error message to the user stating which line and what the problem is.
 			errorString = "ERROR: Line ";
-			string errorLine.to_string(i);
+			string errorLine = " ";
+			errorLine.to_string(i);
 			errorString += errorLine;
 			errorString += ". There is a problem with opcode: ";
 			errorString += placeholder;
@@ -412,7 +414,8 @@ string scanCode()
 						if (foundAt != string::npos) 
 						{
 							//display an error message to the user stating which line and what the problem is.
-							string errorLine.to_string(i);
+							string errorLine = " ";
+							errorLine.to_string(i);
 							errorString = "ERROR: Line " + errorLine + ". There is a problem with the variable number; " + codeFile[i].substr(positionFound,32);
 							return errorString;
 						}
@@ -437,7 +440,7 @@ void writeToExternalFile()
 	newCodeFile = "AssemblerOutput.txt";
 
 	//open a file output stream and pass in the string created
-	ofstream outputFile(newCodeFile);
+	ofstream outputFile(newCodeFile.c_str());
 	
 	//for everything in the code file
 	for(int i=0; i<256; i++)
@@ -500,7 +503,7 @@ int main()
 	ifstream ifile("Simulator");
 	if (ifile) {
 		std::stringstream stream;
-		stream << "Simulator""
+		stream << "Simulator"
 			<< " " // don't forget a space between the path and the arguments
 			<< newCodeFile;
 		system(stream.str().c_str());
