@@ -15,9 +15,6 @@
 #include <string>
 #include <bitset>
 
-//For opening simulator
-#include <sstream>
-
 using namespace std;
 
 string codeFile[256];
@@ -233,9 +230,8 @@ string compileCode(int variableNumber)
 			//for both decinal values, convert to binary using the convertDecToBinary function
 			//for the third cgange the value of the for statement to a string
 			variableData[variableNumber][1] = convertDecToBinary(value,"variable");
-			variableData[variableNumber][2] = convertDecToBinary(i,"operand");	
-			string I.to_string(i);
-			variableData[variableNumber][3] = I;
+			variableData[variableNumber][2] = convertDecToBinary(i,"operand");				
+			variableData[variableNumber][3] = to_string(i);
 			variableNumber++;
 		}
 		
@@ -359,8 +355,7 @@ string scanCode()
 		{
 			//display an error message to the user stating which line and what the problem is.
 			errorString = "ERROR: Line ";
-			string errorLine.to_string(i);
-			errorString += errorLine;
+			errorString += to_string(i);
 			errorString += ". There is a problem with opcode: ";
 			errorString += placeholder;
 			return errorString;
@@ -412,8 +407,7 @@ string scanCode()
 						if (foundAt != string::npos) 
 						{
 							//display an error message to the user stating which line and what the problem is.
-							string errorLine.to_string(i);
-							errorString = "ERROR: Line " + errorLine + ". There is a problem with the variable number; " + codeFile[i].substr(positionFound,32);
+							errorString = "ERROR: Line " + std::to_string(i) + ". There is a problem with the variable number; " + codeFile[i].substr(positionFound,32);
 							return errorString;
 						}
 					}
